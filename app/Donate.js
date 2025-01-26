@@ -4,8 +4,8 @@ import Header from "@/shared/header";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
 
-const Donate = () => {
-    const navigation = useNavigation(); 
+const Donate = ({ navigation= useNavigation() }) => {
+
   const [selectedOptions, setSelectedOptions] = useState({
     option1: false,
     option2: false,

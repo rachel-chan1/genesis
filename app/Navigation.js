@@ -9,7 +9,7 @@ import SellOrDonate from './SellOrDonate'; // SellOrDonate screen component
 import Cart from './Cart';
 import Sell from './Sell';
 import Donate from './Donate';
-import Label from './label';
+import Label from './Label';
 import Checkout from './Checkout';
 
 const Stack = createStackNavigator();
