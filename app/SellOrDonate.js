@@ -42,15 +42,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageWrapper: {
-    padding: 12,
+    marginTop: 10,
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   image: {
-    width: 343, // Adjust the width as needed
-    height: 300, // Adjust the height as needed
-    resizeMode: 'contain',
+    width: 400, // Adjust the width as needed
+    height: 370, // Adjust the height as needed
+    borderRadius: 30,
+    //resizeMode: 'contain',
   },
   textWrapper: {
     position: 'absolute',
@@ -59,13 +61,14 @@ const styles = StyleSheet.create({
   },
   imageHeader: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'sans-serif',
   },
   imageText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center',
   },
   description: {
