@@ -1,14 +1,17 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-
-// Sample Cart Data (you should replace it with your dynamic data)
-const cartData = [
-  { id: '1', name: 'Shirt', price: '$20' },
-  { id: '2', name: 'Jeans', price: '$40' },
-  { id: '3', name: 'Jacket', price: '$60' },
-];
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import Header from '@/shared/header';
 
 const Cart = ({ navigation }) => {
+  const [cartData, setCartData] = useState([
+    { id: '1', name: 'Vintage Sneakers', price: '$45', image: require('@/assets/images/home/clothing1.jpg') },
+    { id: '2', name: 'Navy Star T-Shirt', price: '$10', image: require('@/assets/images/home/clothing5.jpg') },
+    { id: '3', name: 'Cat T-Shirt', price: '$20', image: require('@/assets/images/home/clothing3.jpg') },
+  ]);
+
+  const handleDelete = (id) => {
+    setCartData(cartData.filter(item => item.id !== id));
+  };
 
   const handleCheckoutPress = () => {
     // Handle checkout button press
@@ -17,24 +20,26 @@ const Cart = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Your Cart</Text>
-      
-      {/* Cart List */}
-      <FlatList
-        data={cartData}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.cartItem}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemPrice}>{item.price}</Text>
+      <Header />
+        <View style={styles.innerContainer}>
+        <Text style={styles.header}>Your Cart</Text>
+        {cartData.map((item) => (
+          <View key={item.id} style={styles.greenRectangle}>
+            {item.image && <Image source={item.image} style={styles.itemImage} />}
+            <View style={styles.textContainer}>
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemPrice}>{item.price}</Text>
+            </View>
+            <TouchableOpacity style={styles.trashIcon} onPress={() => handleDelete(item.id)}>
+              <Image source={require('@/assets/images/trash.png')} style={styles.buttonImage} />
+            </TouchableOpacity>
           </View>
-        )}
-      />
-
-      {/* Checkout Button */}
-      <TouchableOpacity onPress={handleCheckoutPress} style={styles.checkoutButton}>
-        <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
-      </TouchableOpacity>
+        ))}
+      </View>
+      <TouchableOpacity style={styles.checkoutButton}>
+          <Image source={require('@/assets/images/cart.png')} style={styles.buttonImage} />
+          <Text style={styles.buttonText}>Checkout</Text>
+        </TouchableOpacity>
     </View>
   );
 };
@@ -42,43 +47,81 @@ const Cart = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
+  innerContainer: {
+    flex: 1,
+    padding: 16,
+    alignItems: 'center',
   },
   header: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 20,
-    textAlign: 'center',
+    fontSize: 30,
+    marginBottom: 16,
+    alignSelf: 'flex-start',
+    fontWeight: '500'
   },
   cartItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 15,
+    padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    borderBottomColor: '#ccc',
   },
   itemName: {
-    fontSize: 18,
-    color: '#333',
+    color: 'black',
+    fontSize: 20,
+    marginBottom: 10,
   },
   itemPrice: {
-    fontSize: 18,
-    color: '#333',
+    fontSize: 16,
+    fontStyle: 'italic', // Make the font italicized
+  },
+  greenRectangle: {
+    width: '100%',
+    height: 117,
+    backgroundColor: '#A8B69F',
+    marginVertical: 10,
+    borderRadius: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  itemImage: {
+    width: 90,
+    height: 95,
+    marginRight: 20,
+    borderRadius: 8,
+    borderWidth: 3,
+    borderColor: '#F9DDD9',
+  },
+  textContainer: {
+    flex: 1,
+  },
+  trashIcon: {
+    width: 24,
+    height: 24,
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
   },
   checkoutButton: {
-    backgroundColor: '#5b744b',
-    paddingVertical: 15,
-    borderRadius: 25,
-    marginTop: 30,
+    flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#24430F',
+    marginBlock: 30,
+    padding: 20,
+    borderRadius: 30,
+    width: '75%',
     justifyContent: 'center',
   },
-  checkoutButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+  buttonImage: {
+    width: 24,
+    height: 24,
+    marginRight: 8,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 25,
   },
 });
 
