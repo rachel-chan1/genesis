@@ -9,12 +9,12 @@ const Cover: React.FC = () => {
                 <View style={styles.textRow}>
                     <Text style={styles.headerText}>Red</Text>
                     <Image
-                        source={require('@/assets/images/chwee1.png')} // Replace with your image path
+                        source={require('@/assets/images/home/chwee1.png')} // Replace with your image path
                         style={styles.cherry}
                     />
                 </View>
                 <Image
-                    source={require('@/assets/images/model.png')} // Replace with your image path
+                    source={require('@/assets/images/home/model.png')} // Replace with your image path
                     style={styles.model}
                 />
                 <View style={styles.smallRectangle}>
@@ -46,13 +46,6 @@ const styles = StyleSheet.create({
     textRow: {
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    headerHeaderText: {
-        fontSize: 24,
-        fontFamily: 'KaiseiOpti',
-        fontWeight: 'bold',
-        alignSelf: 'flex-start',
-        marginLeft: 20,
     },
     headerText: {
         color: '#481013',

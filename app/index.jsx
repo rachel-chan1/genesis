@@ -1,31 +1,41 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
-import React from 'react';
-import Header from '../shared/header'; // Ensure Header is valid and imported
+import React from 'react'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import Cover from "@/components/home/cover"
+import Feed from "@/components/home/feed"
+import Header from '../shared/header'
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Header />
-     
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Search..."
-      />
-      <Cover />
+        <Header />
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search..."
+        />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Cover />
+        <Feed />
+        <View style={{ height: 20 }} />
+      </ScrollView>
+      <View style={styles.newButtonOut}>
+        <View style={styles.newButtonIn}>
+          <Text style={{ color: '#36522A', fontSize: 75, marginTop: -18 }}>+</Text>
+        </View>
+      </View>
     </View>
-  );
-};
+  )
+}
 
-export default App;
-
+export default App
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flex: 1,
-    flexDirection: 'column',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0', // Optional background for visibility
   },
   text: {
     color: 'black',
@@ -51,4 +61,24 @@ const styles = StyleSheet.create({
     elevation: 3, // For Android shadow effect
     alignSelf: 'center', // Center the search bar
   },
-});
+  newButtonOut: {
+    width: 72,
+    height: 72,
+    backgroundColor: '#36522A',
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  newButtonIn: {
+    width: 62,
+    height: 62,
+    backgroundColor: '#E6D2DB',
+    position: 'absolute',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
