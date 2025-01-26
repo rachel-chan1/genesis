@@ -120,5 +120,3 @@ bigImage: {
     borderRadius: 20,
 },
 });
-
-export default Feed;
