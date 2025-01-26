@@ -1,10 +1,18 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Home from './index';
+import { View, Image, TextInput, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Header from '@/shared/header';
 
 const LogIn = () => {
+    const navigation = useNavigation();
+    const handlLogIn = () => {
+        navigation.navigate('HomeScreen');
+    };
     return (
         <View style={styles.container}>
+            <Header />
+            <View style={styles.logcontainer}>
+            <Image source={require('../assets/images/yes.png')} style={styles.image}  />
             <View style={styles.rectangle}>
                 <Text style={styles.title}>Log In</Text>
                 <TextInput
@@ -20,10 +28,11 @@ const LogIn = () => {
                 />
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={handlLogIn}
                 >
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>
+            </View>
             </View>
         </View>
     );
@@ -32,13 +41,27 @@ const LogIn = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+    },
+    image: {
+        width: '80%', // Adjust as needed
+        height: 150, // Adjust as needed // Ensure the image doesn't stretch
+        marginBottom: -15,
+        marginTop: -100, // Space between image and rectangle
+    },
+    logcontainer: {
+        flex: 1,
+        width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f5f5f5',
     },
+   
     rectangle: {
-        width: '80%',
-        padding: 20,
+        justifyContent: 'center',
+        width: '90%',
+        height: '30%',
         backgroundColor: 'white',
         borderRadius: 10,
         alignItems: 'center',
@@ -54,7 +77,8 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     input: {
-        width: '100%',
+        justifyContent: 'center',
+        width: '90%',
         height: 40,
         borderColor: '#ccc',
         borderWidth: 1,
@@ -63,7 +87,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     button: {
-        width: '100%',
+        width: '90%',
         height: 40,
         backgroundColor: 'green',
         borderRadius: 5,

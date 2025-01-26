@@ -3,10 +3,9 @@ import { View, TextInput, StyleSheet, ScrollView, Text } from 'react-native';
 import Cover from '@/components/home/cover';
 import Feed from '@/components/home/feed';
 import Header from '@/shared/header';
-import { LogBox } from 'react-native';
+import { LogBox}  from 'react-native';
 
-LogBox.ignoreAllLogs(); // Hides all warnings
-
+LogBox.ignoreAllLogs(); // Ignore log notification by message
 
 const HomeScreen = () => {
   return (
