@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, StyleSheet, ScrollView, Text } from 'react-native';
 import Cover from '@/components/home/cover';
 import Feed from '@/components/home/feed';
-import Header from '../shared/header';
+import Header from '@/shared/header';
 
 const HomeScreen = () => {
   return (
@@ -44,7 +44,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 15,
     fontSize: 16,
-    boxShadow: '0 2px 5px rgba(0,0,0,0.15)',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    elevation: 3,
     alignSelf: 'center',
   },
   newButtonOut: {

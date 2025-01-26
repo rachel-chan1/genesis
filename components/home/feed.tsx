@@ -71,6 +71,8 @@ const Feed = () => {
 );
 };
 
+export default Feed;
+
 const styles = StyleSheet.create({
 container: {
     justifyContent: 'flex-start',
@@ -118,5 +120,3 @@ bigImage: {
     borderRadius: 20,
 },
 });
-
-export default Feed;
