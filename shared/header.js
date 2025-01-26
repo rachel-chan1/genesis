@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    marginLeft: -10, // Move the image slightly left
+    marginLeft: -15, // Move the image slightly left
     marginTop: 10,
   },
   
