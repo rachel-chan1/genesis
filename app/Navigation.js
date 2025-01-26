@@ -7,6 +7,9 @@ import Bookmarks from './bookmarks'; // Bookmarks screen
 import CarbonTracker from './CarbonTracker'; // Carbon Tracker screen
 import SellOrDonate from './SellOrDonate'; // SellOrDonate screen component
 import Cart from './Cart';
+import Sell from './Sell';
+import Donate from './Donate';
+import Label from './label';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +23,9 @@ export default function Navigation() {
         <Stack.Screen name="CarbonTracker" component={CarbonTracker} />
         <Stack.Screen name="SellOrDonate" component={SellOrDonate} />  {/* This is how you should be registering screens */}
         <Stack.Screen name="Cart" component={Cart} /> 
+        <Stack.Screen name="Sell" component={Sell} />
+        <Stack.Screen name="Donate" component={Donate} />
+        <Stack.Screen name="Label" component={Label} />
       </Stack.Navigator>
     </NavigationContainer>
   );
