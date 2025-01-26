@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Header from '@/shared/header';
+import {useNavigation} from '@react-navigation/native';
 
-const Cart = ({ navigation }) => {
+const Cart = ({ navigation= useNavigation() }) => {
+    
   const [cartData, setCartData] = useState([
     { id: '1', name: 'Vintage Sneakers', price: '$45', image: require('@/assets/images/home/clothing1.jpg') },
     { id: '2', name: 'Navy Star T-Shirt', price: '$10', image: require('@/assets/images/home/clothing5.jpg') },
@@ -14,10 +16,8 @@ const Cart = ({ navigation }) => {
   };
 
   const handleCheckoutPress = () => {
-    // Handle checkout button press
-    console.log("Checkout button pressed!");
+    navigation.navigate('Checkout');  // This will navigate to the Checkout screen when the button is pressed.
   };
-
   return (
     <View style={styles.container}>
       <Header />
@@ -36,10 +36,13 @@ const Cart = ({ navigation }) => {
           </View>
         ))}
       </View>
-      <TouchableOpacity style={styles.checkoutButton}>
-          <Image source={require('@/assets/images/cart.png')} style={styles.buttonImage} />
-          <Text style={styles.buttonText}>Checkout</Text>
-        </TouchableOpacity>
+      <TouchableOpacity
+      style={styles.checkoutButton}
+      onPress={handleCheckoutPress}  // Invoke the function here to navigate on button press
+    >
+      <Image source={require('@/assets/images/cart.png')} style={styles.buttonImage} />
+      <Text style={styles.buttonText}>Checkout</Text>
+    </TouchableOpacity>
     </View>
   );
 };
