@@ -4,20 +4,22 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Header() {
     const [isOverlayVisible, setOverlayVisible] = useState(false);
+
     const toggleOverlay = () => {
         setOverlayVisible(!isOverlayVisible);
     };
     const handleProfilePress = () => {
         console.log("Profile button pressed!");
+        toggleOverlay();
         // You can add any navigation or action here, e.g., navigating to a profile page
       };
+
   return (
-    
-    <View style={styles.header}>
-    <TouchableOpacity onPress={toggleOverlay}>
-      <MaterialIcons name="menu" size={30} color="#333" style={styles.icon} />
+    <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={toggleOverlay}>
+        <MaterialIcons name="menu" size={30} color="#333" style={styles.menuIcon} />
       </TouchableOpacity>
-    
+      
       <View style={styles.textContainer}>
         <Image source={require('../assets/images/yes.png')} style={styles.image} />
         <Text style={styles.headerText}>Genesis</Text>
@@ -26,22 +28,23 @@ export default function Header() {
         <MaterialIcons name="account-circle" size={30} color="#333" style={styles.profileIcon} />
       </TouchableOpacity>    
       {isOverlayVisible && (
-        <View style={styles.menu}>
-          <Text style={styles.menuText}>Menu Option 1</Text>
-          <Text style={styles.menuText}>Menu Option 2</Text>
-          <Text style={styles.menuText}>Menu Option 3</Text>
-          <TouchableOpacity onPress={toggleOverlay} style={styles.closeButton}>
-            <Text style={styles.closeButtonText}>Close Menu</Text>
-          </TouchableOpacity>
+        <View style={styles.overlay}>
+          <View style={styles.menu}>
+            <Text style={styles.menuText}>Bookmarks</Text>
+            <Text style={styles.menuText}>Carbon Tracker</Text>
+            <Text style={styles.menuText}>Sell or Donate</Text>
+            <TouchableOpacity onPress={toggleOverlay} style={styles.closeButton}>
+              <Text style={styles.closeButtonText}>Close Menu</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
-      
-      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
+  headerContainer: {
     top: 0,
     width: '100%',
     height: 60, // Fixed height for the header
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f8f8', // Optional background color
     borderBottomWidth: 1, // Optional border
     borderBottomColor: '#ddd',
-    zIndex: 10, // Optional border color
+    zIndex: 5,
   },
   textContainer: {
     flexDirection: 'row',
@@ -76,37 +79,41 @@ const styles = StyleSheet.create({
     marginLeft: -15, // Move the image slightly left
     marginTop: 10,
   },
-  menu: {
+  menuIcon: {
+    marginLeft: 10,
+  },
+  profileIcon: {
+    marginRight: 10,
+  },
+  overlay: {
+    width: '115%',
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '75%',
-    height: '100%',
-    backgroundColor: '#0000',
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5, // For Android shadow
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+  },
+  menu: {
+    width: '100%',
     padding: 20,
-    zIndex: 100,
+    backgroundColor: '#A8B69F',
+    alignItems: 'center',
   },
   menuText: {
     fontSize: 18,
-    color: '#333',
+    color: '#fff',
     marginVertical: 10,
   },
   closeButton: {
     marginTop: 20,
-    backgroundColor: '#36522A',
     padding: 10,
-    borderRadius: 10,
-    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 5,
   },
   closeButtonText: {
-    color: '#fff',
     fontSize: 16,
+    color: 'green',
   },
 });

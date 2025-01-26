@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
 import Cover from "@/components/home/cover"
 import Feed from "@/components/home/feed"
-import Header from '../shared/header'
+import Header from '../../shared/header'
 
 const App = () => {
   return (
@@ -20,6 +20,7 @@ const App = () => {
       <View style={styles.newButtonOut}>
         <View style={styles.newButtonIn}>
           <Text style={{ color: '#36522A', fontSize: 75, marginTop: -18 }}>+</Text>
+          
         </View>
       </View>
     </View>

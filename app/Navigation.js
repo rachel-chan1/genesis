@@ -1,16 +1,26 @@
+// navigation.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import App from './index'; // Your main app component
+import App from './(tabs)/index';  // Home screen
+import Shop from './(tabs)/shop';  // Shop screen
+import Feed from '@/components/home/feed';  // Feed screen
 
 const Stack = createStackNavigator();
 
-export default function Navigation() {
+const AppNavigator = () => {
+  console.log('AppNavigator is being rendered');
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={App} />
+        <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen name="Shop" component={Shop} />
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+
+export default AppNavigator;  // Ensure this export is here

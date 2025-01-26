@@ -1,7 +1,19 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigationTypes';
+
 
 const Feed: React.FC = () => {
+
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Feed'>>();
+
+    const pictureOnPress = () => {
+        console.log("Navigating to Shop...");
+        navigation.navigate('Shop');
+    };
+    
     return (
         <View style={styles.container}>
             <View style={styles.row}>
@@ -33,10 +45,13 @@ const Feed: React.FC = () => {
                 </View>
                 <View style={styles.column}>
                     <View style={styles.bigRectangle}>
-                        <Image
-                            source={require('@/assets/images/home/clothing6.png')} // Replace with your image path
-                            style={styles.bigImage}
-                        />
+                    <TouchableOpacity onPress={pictureOnPress} style={styles.touchableContainer}>
+    <Image
+        source={require('@/assets/images/home/clothing6.png')}
+        style={styles.bigImage}
+    />
+</TouchableOpacity>
+
                     </View>
                     <View style={styles.smallRectangle}>
                         <Image
@@ -62,7 +77,17 @@ const Feed: React.FC = () => {
     );
 };
 
+export default Feed;
+
 const styles = StyleSheet.create({
+    
+        touchableContainer: {
+            width: '88%', // Same as the image width
+            height: '93%', // Same as the image height
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+    
     container: {
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -109,5 +134,3 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
 });
-
-export default Feed;
