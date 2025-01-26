@@ -12,8 +12,7 @@ export default function Header() {
     };
 
     const handleProfilePress = () => {
-        console.log("Profile button pressed!");
-        //toggleOverlay();
+        navigation.navigate('LogIn'); // Navigate to LogIn screen
     };
 
     // Function to navigate to the "Bookmarks" screen
