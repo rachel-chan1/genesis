@@ -36,3 +36,17 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+# backend
+backend/db.sqlite3
+backend/mysite/__pycache__/
+
+# json
+package-lock.json
+package.json
+
+# vscode
+.vscode/
+
+# venv
+.venv/
