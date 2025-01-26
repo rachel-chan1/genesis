@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import App from './index'; // Your main app component
+import App from './index'; // Home component
+import ClothingDetails from './ClothingDetails'; // Details screen component
 
 const Stack = createStackNavigator();
 
@@ -10,6 +11,7 @@ export default function Navigation() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={App} />
+        <Stack.Screen name="ClothingDetails" component={ClothingDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );
