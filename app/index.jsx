@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
 import Cover from "@/components/home/cover"
 import Feed from "@/components/home/feed"
 import Header from '../shared/header'
@@ -8,11 +8,11 @@ const App = () => {
   return (
     <View style={styles.container}>
         <Header />
-        <TextInput
-          style={styles.searchBar}
-          placeholder="Search..."
-        />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <TextInput
+            style={styles.searchBar}
+            placeholder="Search..."
+          />
         <Cover />
         <Feed />
         <View style={{ height: 20 }} />
