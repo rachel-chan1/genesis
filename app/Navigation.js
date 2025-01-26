@@ -11,6 +11,7 @@ import Sell from './Sell';
 import Donate from './Donate';
 import Label from './Label';
 import Checkout from './Checkout';
+import Trending from './Trending';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ export default function Navigation() {
         <Stack.Screen name="Donate" component={Donate} />
         <Stack.Screen name="Label" component={Label} />
         <Stack.Screen name="Checkout" component={Checkout} />
+        <Stack.Screen name="Trending" component={Trending} />
       </Stack.Navigator>
     </NavigationContainer>
   );
