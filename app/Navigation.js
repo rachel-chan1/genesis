@@ -10,10 +10,11 @@ import SellOrDonate from './SellOrDonate'; // SellOrDonate screen component
 import Cart from './Cart';
 import Sell from './Sell';
 import Donate from './Donate';
-import Label from './Label';
+import Label from './label';
 import Checkout from './Checkout';
 import Trending from './Trending';
 import LogIn from './LogIn';
+import Signup from './Signup';
 
 
 const Stack = createStackNavigator();
@@ -22,7 +23,8 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={LogIn} />
+        <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Home" component={App} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ClothingDetails" component={ClothingDetails} />
