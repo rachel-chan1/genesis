@@ -1,9 +1,59 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import Header from '@/shared/header';
 import { ProgressBar } from 'react-native-paper'; // Import ProgressBar
+import axios from 'axios';
 
 const CarbonTracker = () => {
+  const [userId, setUserId] = useState(1);
+  const [carbonFootprint, setCarbonFootprint] = useState(null);
+  const [carbonPercentage, setCarbonPercentage] = useState(null);
+  const [max, setMax] = useState(false);
+  const [error, setError] = useState(null);
+
+  const backendUrl = 'https://localhost:8000/api/carbonfootprint/';
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const response = await axios.post(backendUrl, { user_id: userId });
+
+        if (response.data) {
+          setCarbonFootprint(response.data.carbon_footprint);
+          setCarbonPercentage(response.data.carbon_percentage);
+          setMax(response.data.max);
+          setError(null);
+        }
+      } catch (error) {
+        setError("error fetching user data");
+        console.error(error);
+      }
+    }
+
+    getUserData();
+  }, [userId]);
+
+
+  const handleRedeem = async () => {
+    if (max) {
+      try {
+        const response = await axios.put(backendUrl, { user_id: userId });
+
+        if (response.data) {
+          Alert.alert("You redeemed 10% off your next order!");
+          setCarbonFootprint(response.data.carbon_footprint);
+          setCarbonPercentage(response.data.carbon_percentage);
+          setError(null);
+        }
+      } catch (error) {
+        setError("error fetching user data");
+        console.error(error);
+      }
+    } else {
+      Alert.alert("You have not reduced enough emissions yet.")
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Header />
@@ -21,7 +71,7 @@ const CarbonTracker = () => {
       {/* Progress Bars */}
       <View style={styles.progressContainer}>
         <Text style={styles.progressLabel}>Buying Secondhand</Text>
-        <ProgressBar progress={0.6} color="#35522b" style={styles.progressBar} />
+        <ProgressBar progress={carbonPercentage} color="#35522b" style={styles.progressBar} />
         
         <Text style={styles.progressLabel}>Donations</Text>
         <ProgressBar progress={0.3} color="#a7b59e" style={styles.progressBar} />
@@ -32,7 +82,7 @@ const CarbonTracker = () => {
 
       {/* Redeem Points Button */}
       <View style={styles.buttonContainer}> {/* Center container */}
-        <TouchableOpacity style={styles.redeemButton}>
+        <TouchableOpacity style={styles.redeemButton} onPress={handleRedeem}>
           <Text style={styles.redeemButtonText}>Redeem Points</Text>
         </TouchableOpacity>
       </View>
