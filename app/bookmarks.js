@@ -1,10 +1,12 @@
 // Bookmarks.js
+import { Header } from '@react-navigation/stack';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const Bookmarks = () => {
     return (
         <View style={styles.container}>
+            <Header />
             <Text style={styles.header}>Bookmarks</Text>
             {/* Add your content for the bookmarks screen here */}
         </View>
