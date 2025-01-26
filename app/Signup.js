@@ -4,55 +4,58 @@ import { useNavigation } from '@react-navigation/native';
 import Header from '@/shared/header';
 import axios from 'axios';
 
-const LogIn = () => {
+const Signup = () => {
     const navigation = useNavigation();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogIn = async () => {
+    const handleSignUp = async () => {
         try {
-            const response = await axios.post('https://localhost:8000/api/user/login/', {
+            const response = await axios.post('https://localhost:8000/api/user/signup/', {
                 username,
                 password,
             });
 
-            if (response.status === 200) {
-                navigation.navigate('HomeScreen');
+            if (response.status === 201) {
+                Alert.alert('Sign Up Successful', 'You can now log in');
+                navigation.navigate('LogIn');
             } else {
-                alert('Log In Failed', response.data.error);
+                Alert.alert('Sign Up Failed', response.data.error);
             }
         } catch (error) {
-            Alert.alert('Error', 'An error occurred while logging in');
+            Alert.alert('Error', 'An error occurred while signing up');
         }
     };
+
     return (
         <View style={styles.container}>
             <Header />
             <View style={styles.logcontainer}>
-            <Image source={require('../assets/images/yes.png')} style={styles.image}  />
-            <View style={styles.rectangle}>
-                <Text style={styles.title}>Log In</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Username"
-                    placeholderTextColor="#aaa"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    placeholderTextColor="#aaa"
-                    secureTextEntry
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={handleLogIn}
-                >
-                    <Text style={styles.buttonText}>Log In</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-                        <Text style={styles.buttonText2}>Sign Up</Text>
+                <Image source={require('../assets/images/yes.png')} style={styles.image} />
+                <View style={styles.rectangle}>
+                    <Text style={styles.title}>Sign Up</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Username"
+                        placeholderTextColor="#aaa"
+                        value={username}
+                        onChangeText={setUsername}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        placeholderTextColor="#aaa"
+                        secureTextEntry
+                        value={password}
+                        onChangeText={setPassword}
+                    />
+                    <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+                        <Text style={styles.buttonText}>Sign Up</Text>
                     </TouchableOpacity>
-            </View>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                        <Text style={styles.buttonText2}>Log In</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
@@ -126,4 +129,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LogIn;
+export default Signup;
