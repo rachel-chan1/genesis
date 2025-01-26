@@ -10,6 +10,7 @@ import Cart from './Cart';
 import Sell from './Sell';
 import Donate from './Donate';
 import Label from './label';
+import Checkout from './Checkout';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default function Navigation() {
         <Stack.Screen name="Sell" component={Sell} />
         <Stack.Screen name="Donate" component={Donate} />
         <Stack.Screen name="Label" component={Label} />
+        <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>
     </NavigationContainer>
   );
