@@ -29,6 +29,10 @@ export default function Header() {
         navigation.navigate('SellOrDonate');  // Navigate to the Sell or Donate screen
         toggleOverlay();  // Close the overlay menu
     };
+    const handleCartPress = () => {
+        navigation.navigate('Cart');  // Navigate to the Cart screen
+        toggleOverlay();  // Close the overlay menu
+    };
     return (
         <View style={styles.headerContainer}>
             <TouchableOpacity onPress={toggleOverlay}>
@@ -53,6 +57,9 @@ export default function Header() {
                         </TouchableOpacity>
                         <TouchableOpacity onPress={handleSellOrDonatePress}> {/* Added navigation for Sell or Donate */}
                             <Text style={styles.menuText}>Sell or Donate</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={handleCartPress}> {/* Added Cart navigation */}
+                            <Text style={styles.menuText}>Cart</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={toggleOverlay} style={styles.closeButton}>
                             <Text style={styles.closeButtonText}>Close Menu</Text>
