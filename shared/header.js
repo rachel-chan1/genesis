@@ -1,46 +1,67 @@
-import { View, Text, StyleSheet, Image , TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 
 export default function Header() {
     const [isOverlayVisible, setOverlayVisible] = useState(false);
+    const navigation = useNavigation();  // Initialize the navigation hook
 
     const toggleOverlay = () => {
         setOverlayVisible(!isOverlayVisible);
     };
+
     const handleProfilePress = () => {
         console.log("Profile button pressed!");
-        toggleOverlay();
-        // You can add any navigation or action here, e.g., navigating to a profile page
-      };
+        //toggleOverlay();
+    };
 
-  return (
-    <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={toggleOverlay}>
-        <MaterialIcons name="menu" size={30} color="#333" style={styles.menuIcon} />
-      </TouchableOpacity>
-      
-      <View style={styles.textContainer}>
-        <Image source={require('../assets/images/yes.png')} style={styles.image} />
-        <Text style={styles.headerText}>Genesis</Text>
-      </View>
-      <TouchableOpacity onPress={handleProfilePress}>
-        <MaterialIcons name="account-circle" size={30} color="#333" style={styles.profileIcon} />
-      </TouchableOpacity>    
-      {isOverlayVisible && (
-        <View style={styles.overlay}>
-          <View style={styles.menu}>
-            <Text style={styles.menuText}>Bookmarks</Text>
-            <Text style={styles.menuText}>Carbon Tracker</Text>
-            <Text style={styles.menuText}>Sell or Donate</Text>
-            <TouchableOpacity onPress={toggleOverlay} style={styles.closeButton}>
-              <Text style={styles.closeButtonText}>Close Menu</Text>
+    // Function to navigate to the "Bookmarks" screen
+    const handleBookmarksPress = () => {
+        navigation.navigate('bookmarks');  // Navigate to the Bookmarks screen
+        toggleOverlay();  // Close the overlay menu
+    };
+    const handleCarbonTrackerPress = () => {
+        navigation.navigate('CarbonTracker');  // Navigate to the Carbon Tracker screen
+        toggleOverlay();  // Close the overlay menu
+    };
+    const handleSellOrDonatePress = () => {
+        navigation.navigate('SellOrDonate');  // Navigate to the Sell or Donate screen
+        toggleOverlay();  // Close the overlay menu
+    };
+    return (
+        <View style={styles.headerContainer}>
+            <TouchableOpacity onPress={toggleOverlay}>
+                <MaterialIcons name="menu" size={30} color="#333" style={styles.menuIcon} />
             </TouchableOpacity>
-          </View>
+            
+            <View style={styles.textContainer}>
+                <Image source={require('../assets/images/yes.png')} style={styles.image} />
+                <Text style={styles.headerText}>Genesis</Text>
+            </View>
+            <TouchableOpacity onPress={handleProfilePress}>
+                <MaterialIcons name="account-circle" size={30} color="#333" style={styles.profileIcon} />
+            </TouchableOpacity>    
+            {isOverlayVisible && (
+                <View style={styles.overlay}>
+                    <View style={styles.menu}>
+                        <TouchableOpacity onPress={handleBookmarksPress}> {/* Added navigation on click */}
+                            <Text style={styles.menuText}>Bookmarks</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={handleCarbonTrackerPress}> {/* Added navigation for Carbon Tracker */}
+                            <Text style={styles.menuText}>Carbon Tracker</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={handleSellOrDonatePress}> {/* Added navigation for Sell or Donate */}
+                            <Text style={styles.menuText}>Sell or Donate</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={toggleOverlay} style={styles.closeButton}>
+                            <Text style={styles.closeButtonText}>Close Menu</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )}
         </View>
-      )}
-    </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
