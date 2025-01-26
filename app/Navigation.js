@@ -9,9 +9,10 @@ import SellOrDonate from './SellOrDonate'; // SellOrDonate screen component
 import Cart from './Cart';
 import Sell from './Sell';
 import Donate from './Donate';
-import Label from './label';
+import Label from './Label';
 import Checkout from './Checkout';
 import Trending from './Trending';
+import LogIn from './LogIn';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ export default function Navigation() {
         <Stack.Screen name="Label" component={Label} />
         <Stack.Screen name="Checkout" component={Checkout} />
         <Stack.Screen name="Trending" component={Trending} />
+        <Stack.Screen name="LogIn" component={LogIn} />
       </Stack.Navigator>
     </NavigationContainer>
   );

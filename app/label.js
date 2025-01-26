@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   firstRectangle: {
-    backgroundColor: "#A8B69F", // Color for the first rectangle
+    backgroundColor: "#35522b", // Color for the first rectangle
     borderRadius: 20,
     padding: 60, // Adjust padding for a taller rectangle
     marginTop: 20,
