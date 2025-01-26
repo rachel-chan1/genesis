@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Alert } from "react-native";
 import Header from "@/shared/header";
 
 const Label = ({ navigation }) => {
   const [labelNumber, setLabelNumber] = useState("");
-
+  const handleSubmit = () => {
+    // Show the alert when the submit button is pressed
+    Alert.alert("Thank you for your donation!");
+    // You can navigate to another screen if needed, or add more logic here
+    // For example: navigation.navigate("SomeScreen")
+  };
   return (
     <View style={styles.container}>
       <Header />
@@ -33,7 +38,7 @@ const Label = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.submitButton}
-          onPress={() => navigation.navigate("Label")}
+          onPress={handleSubmit}
         >
           <Text style={styles.submitButtonText}>Submit</Text>
         </TouchableOpacity>
