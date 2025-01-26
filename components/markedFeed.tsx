@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const Feed = () => {
+const MarkedFeed = () => {
   const router = useRouter();
 
   const handleImagePress = () => {
@@ -15,13 +15,13 @@ const Feed = () => {
             <View style={styles.column}>
                 <View style={styles.smallRectangle}>
                     <Image
-                        source={require('@/assets/images/home/clothing1.jpg')}
+                        source={require('@/assets/images/shirt1.jpeg')}
                         style={styles.smallImage}
                     />
                 </View>
                 <View style={styles.bigRectangle}>
                     <Image
-                        source={require('@/assets/images/home/clothing5.jpg')} // Replace with your image path
+                        source={require('@/assets/images/red2.webp')} // Replace with your image path
                         style={styles.bigImage}
                     />
                 </View>
@@ -49,7 +49,7 @@ const Feed = () => {
       </TouchableOpacity>
                 <View style={styles.smallRectangle}>
                     <Image
-                        source={require('@/assets/images/home/clothing2.jpg')} // Replace with your image path
+                        source={require('@/assets/images/red1.webp')} // Replace with your image path
                         style={styles.smallImage}
                     />
                 </View>
@@ -61,7 +61,7 @@ const Feed = () => {
                 </View>
                 <View style={styles.smallRectangle}>
                 <Image
-                        source={require('@/assets/images/home/clothing4.jpg')} // Replace with your image path
+                        source={require('@/assets/images/red3.webp')} // Replace with your image path
                         style={styles.smallImage}
                     />
                 </View>
@@ -72,7 +72,7 @@ const Feed = () => {
 );
 };
 
-export default Feed;
+export default MarkedFeed;
 
 const styles = StyleSheet.create({
 container: {
