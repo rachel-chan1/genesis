@@ -16,9 +16,9 @@ export default function Navigation() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={App} />
         <Stack.Screen name="ClothingDetails" component={ClothingDetails} />
-        <Stack.Screen name="Bookmarks" component={Bookmarks} /> {/* Add the new screen */}
+        <Stack.Screen name="Bookmarks" component={Bookmarks} />
         <Stack.Screen name="CarbonTracker" component={CarbonTracker} />
-        <Stack.Screen name="SellOrDonate" component={SellOrDonate} />  {/* Register SellOrDonate */}
+        <Stack.Screen name="SellOrDonate" component={SellOrDonate} />
       </Stack.Navigator>
     </NavigationContainer>
   );
