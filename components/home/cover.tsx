@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Cover: React.FC = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.rectangle}>
@@ -17,9 +19,9 @@ const Cover: React.FC = () => {
                     source={require('@/assets/images/home/model.png')} // Replace with your image path
                     style={styles.model}
                 />
-                <View style={styles.smallRectangle}>
+                <TouchableOpacity style={styles.smallRectangle} onPress={() => navigation.navigate('Trending')}>
                     <Text style={styles.buttonText}>Discover ➔</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );
