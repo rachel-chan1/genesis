@@ -64,19 +64,19 @@ const Feed: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
+        flexDirection: 'column',
     },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        paddingHorizontal: 15,
+        paddingHorizontal: 25,
     },
     column: {
-        flex: 1,
         alignItems: 'center',
+        marginHorizontal: 15,
     },
     smallRectangle: {
         width: 165,
