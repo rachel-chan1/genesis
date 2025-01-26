@@ -11,14 +11,17 @@ const App = () => {
         style={styles.searchBar}
         placeholder="Search..."
       />
+      <Cover />
     </View>
   );
 };
 
 export default App;
 
+
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
